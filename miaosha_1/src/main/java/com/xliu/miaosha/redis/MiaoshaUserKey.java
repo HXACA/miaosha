@@ -13,6 +13,10 @@ public class MiaoshaUserKey extends BasePrefix {
         super(expireSeconds, prefix);
     }
 
-    public static MiaoshaUserKey token = new MiaoshaUserKey(TOKEN_EXPIRE,"token");
+    public MiaoshaUserKey(String prefix) {
+        super(prefix);
+    }
 
+    public static MiaoshaUserKey token = new MiaoshaUserKey(TOKEN_EXPIRE,"token");
+    public static MiaoshaUserKey getById = new MiaoshaUserKey("getById");
 }

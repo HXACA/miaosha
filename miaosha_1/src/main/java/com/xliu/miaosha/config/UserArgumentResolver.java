@@ -38,6 +38,7 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
         HttpServletResponse response = nativeWebRequest.getNativeResponse(HttpServletResponse.class);
         String paramToken = request.getParameter(MiaoshaUserService.COOKIE_NAME_TOKEN);
         String cookieToken = getCookieValue(request,MiaoshaUserService.COOKIE_NAME_TOKEN);
+        //System.out.println(paramToken);
         if(StringUtils.isEmpty(cookieToken) && StringUtils.isEmpty(paramToken)){
             return null;
         }
@@ -47,7 +48,7 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
 
     private String getCookieValue(HttpServletRequest request, String cookieNameToken) {
         Cookie[] cookies = request.getCookies();
-        if(cookies == null){
+        if(cookies == null || cookies.length <= 0){
             return null;
         }
         for (Cookie cookie : cookies) {

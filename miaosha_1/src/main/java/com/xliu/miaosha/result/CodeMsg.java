@@ -6,6 +6,8 @@ package com.xliu.miaosha.result;
  * @date 2020/4/7 15:16
  */
 public class CodeMsg {
+
+
     private int code;
     private String msg;
 
@@ -14,13 +16,15 @@ public class CodeMsg {
     public static CodeMsg SERVER_ERROR = new CodeMsg(500100,"服务端异常");
     public static CodeMsg BIND_ERROR = new CodeMsg(500101,"参数校验异常:%s");
 
-
+    public static final CodeMsg SESSION_ERROR = new CodeMsg(500210,"Session失效或不存在");
     public static CodeMsg PASSWORD_EMPTY = new CodeMsg(500211,"登录密码不能为空");
     public static CodeMsg MOBILE_EMPTY = new CodeMsg(500212,"手机号不能为空");
     public static CodeMsg MOBILE_ERROR= new CodeMsg(500213,"手机号格式错误");
     public static CodeMsg MOBILE_NOT_EXIST= new CodeMsg(500214,"手机号未注册");
     public static CodeMsg PASSWORD_ERROR = new CodeMsg(500215,"登录密码错误");
 
+
+    public static final CodeMsg ORDER_ERROR =new CodeMsg(500216,"该订单不存在或不属于该用户");
     public static CodeMsg MIAOSHA_OVER = new CodeMsg(500500,"商品已经被秒杀完毕");
     public static CodeMsg MIAOSHA_REPEAT = new CodeMsg(500501,"一个用户只能秒杀一件！");
 

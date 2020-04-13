@@ -28,7 +28,7 @@ public class GoodsService {
         return goodsDao.selectById(goodsId);
     }
 
-    public void reduceStock(long id) {
-        goodsDao.reduceStock(id);
+    public int reduceStock(long id) {
+        return goodsDao.reduceStock(id);
     }
 }
