@@ -1,15 +1,15 @@
 1. 主要技术栈
     1. 前端
-        1. Thymeleaf
+        1. Thymeleaf，封装Result结果
         2. Bootstrap
-        3. JQuery
+        3. JQuery，前后端分离，JSON数据传输
     2. 后端
         1. SpringBoot
-        2. JSR303
+        2. JSR303参数验证+全局异常处理器
         3. MyBatis
     3. 中间件
-        1. RabbitMQ
-        2. Redis
+        1. RabbitMQ，实现异步下单，提高高并发可用性
+        2. Redis，集成Jedis
         3. Druid
 2. 登录功能
     1. 两次MD5
