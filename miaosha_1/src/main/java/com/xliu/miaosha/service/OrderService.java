@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author liuxin
@@ -27,11 +28,7 @@ public class OrderService {
     RedisService redisService;
 
     public MiaoshaOrder getMiaoshaOrderByUserIdGoodsId(long userId, long goodsId) {
-        MiaoshaOrder miaoshaOrder = redisService.get(OrderKey.getOrderList, goodsId + "_" + userId, MiaoshaOrder.class);
-        if(miaoshaOrder != null){
-            return miaoshaOrder;
-        }
-        return orderDao.getByUserIdGoodsId(userId, goodsId);
+        return redisService.get(OrderKey.getOrderList, goodsId + "_" + userId, MiaoshaOrder.class);
     }
 
     @Transactional
@@ -46,11 +43,11 @@ public class OrderService {
         orderInfo.setOrderChannel(1);
         orderInfo.setStatus(0);
         orderInfo.setUserId(user.getId());
-        long orderId = orderDao.insert(orderInfo);
+        orderDao.insert(orderInfo);
 
         MiaoshaOrder miaoshaOrder = new MiaoshaOrder();
         miaoshaOrder.setGoodsId(good.getId());
-        miaoshaOrder.setOrderId(orderId);
+        miaoshaOrder.setOrderId(orderInfo.getId());
         miaoshaOrder.setUserId(user.getId());
         orderDao.insertMiaoshaOrder(miaoshaOrder);
         redisService.set(OrderKey.getOrderList,good.getId()+"_"+user.getId(),miaoshaOrder);
@@ -59,5 +56,10 @@ public class OrderService {
 
     public OrderInfo getOrderByOrderOd(long orderId) {
         return orderDao.selectOrderByOrderOd(orderId);
+    }
+
+    public void deleteOrders() {
+        orderDao.deleteOrders();
+        orderDao.deleteMiaoshaOrders();
     }
 }

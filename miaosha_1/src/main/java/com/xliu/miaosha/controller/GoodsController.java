@@ -61,7 +61,6 @@ public class GoodsController {
     @RequestMapping(value = "/to_detail/{goodsId}")
     @ResponseBody
     public Result<GoodsDetailVo> toDetail(MiaoshaUser user, @PathVariable("goodsId") long goodsId) {
-
         GoodsVo goodsVo = goodsService.getGoodsVoByGoodsId(goodsId);
         long startAt = goodsVo.getStartDate().getTime();
         long endAt = goodsVo.getEndDate().getTime();

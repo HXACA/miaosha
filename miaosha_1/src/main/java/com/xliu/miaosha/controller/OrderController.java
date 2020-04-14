@@ -2,6 +2,7 @@ package com.xliu.miaosha.controller;
 
 import com.xliu.miaosha.domain.MiaoshaUser;
 import com.xliu.miaosha.domain.OrderInfo;
+import com.xliu.miaosha.rabbitmq.MQSender;
 import com.xliu.miaosha.result.CodeMsg;
 import com.xliu.miaosha.result.Result;
 import com.xliu.miaosha.service.GoodsService;
